@@ -1,7 +1,7 @@
 module.exports = async (req,res) =>{
     try {
       const apiKey = process.env.NASA_FIRMS_API_KEY;
-      const url = "https://firms.modaps.eosdis.nasa.gov/api/area/csv/${apiKey}/VIIRS_SNPP_NRT/-125,24,-65,49/5";
+      const url = 'https://firms.modaps.eosdis.nasa.gov/api/area/csv/${apiKey}/VIIRS_SNPP_NRT/-125,24,-65,49/5';
   
       // get data from nasa firms
       const response =await fetch(url);
