@@ -8,12 +8,14 @@ module.exports = async (req,res) =>{
       const csvText = await response.text();
   
       //parse data to json
-      const rows = csvText.trim().split("\n");
-      const headers = rows[0].split(",");
+      const rows = csvText.trim().split(/\r?\n/);
+      const headers = rows[0].split(',');
   
       // convert to individual fire objects
-      const fires =rows.slice(1).map(row =>{
-        const values = row.split(",");
+      const fires =rows.slice(1)
+      .filter(row => row.trim() !== '')
+      .map(row =>{
+        const values = row.split(',');
         const fire = {};
         headers.forEach((header,index) => {
           fire[header.trim()]= values[index]?.trim();
