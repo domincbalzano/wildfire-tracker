@@ -2,9 +2,7 @@ module.exports = async (req,res) =>{
     try {
       const apiKey = process.env.NASA_FIRMS_API_KEY;
       const url = `https://firms.modaps.eosdis.nasa.gov/api/area/csv/${apiKey}/VIIRS_SNPP_NRT/-125,24,-65,49/5`;
-  
-      // trying to debug why api not working only in vercel
-      console.log('API KEY:', apiKey ? 'found' : 'missing');
+
       // get data from nasa firms
       const response =await fetch(url);
       const csvText = await response.text();
@@ -30,6 +28,4 @@ module.exports = async (req,res) =>{
   
     } catch (error){
       console.error("error getting fires:",error);
-      //added error message to see why fire api not working
-      res.status(500).json({ error: error.message });
     }};
