@@ -7,6 +7,8 @@ module.exports = async (req,res) =>{
       // get data from nasa firms
       const response =await fetch(url);
       const csvText = await response.text();
+      
+      console.log('CSV preview:', csvText.substring(0, 200));
   
       //parse data to json
       const rows = csvText.trim().split(/\r?\n/);
