@@ -24,4 +24,6 @@ module.exports = async (req,res) =>{
   
     } catch (error){
       console.error("error getting fires:",error);
+      //added error message to see why fire api not working
+      res.status(500).json({ error: error.message });
     }};
